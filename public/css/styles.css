@@ -165,15 +165,37 @@ button:disabled{
     text-align:right;
 }
 
+.message__style__other{
+    align-self:flex-start;
+    max-width: 40%;
+    background-color: white;
+    border-radius:4px;
+    margin-top:10px;
+    margin-left:10px;
+    text-align:left;
+}
+
+
 .message__title{
     display:flex;
-    justify-content:flex-end;
+    /*justify-content:flex-end;*/
+    margin-bottom:5px
+}
+
+.message__title__other{
+    display:flex;
+    justify-content:flex-start;
     margin-bottom:5px
 }
 
 .message__title h4{
     font-weight:600;
     margin-right:10px
+}
+
+.message__title__other h4{
+    font-weight:600;
+    margin-left:10px
 }
 
 .message__title span{

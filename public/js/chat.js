@@ -1,5 +1,7 @@
 let socket = io();
 
+
+
 function scrollToBottom() {
   let messages = document.querySelector('#messages').lastElementChild;
   messages.scrollIntoView();
@@ -47,7 +49,7 @@ socket.on('newMessage', function(message) {
   });
 
   const div = document.createElement('div');
-  div.classList.add('message__style')
+  div.classList.add('message__style__other')
   div.innerHTML = html
 
   document.querySelector('#messages').appendChild(div);
@@ -58,7 +60,6 @@ socket.on('newMessage', function(message) {
 socket.on('newLocationMessage', function(message) {
   const formattedTime = moment(message.createdAt).format('LT');
   console.log("newLocationMessage", message);
-
   const template = document.querySelector('#location-message-template').innerHTML;
   const html = Mustache.render(template, {
     from: message.from,
@@ -67,7 +68,7 @@ socket.on('newLocationMessage', function(message) {
   });
 
   const div = document.createElement('div');
-  div.classList.add('message__style')
+  div.classList.add('message__style__other')
   div.innerHTML = html
 
   document.querySelector('#messages').appendChild(div);
@@ -78,11 +79,33 @@ socket.on('newLocationMessage', function(message) {
 document.querySelector('#submit-btn').addEventListener('click', function(e) {
   e.preventDefault(); // 링크 이동을 막아준다(디폴트를 삭제한다)
 
+  //this.users.filter((user) => user.id === id)[0];
+  var message = document.querySelector('input[name="message"]').value;
+  var searchQuery = window.location.search.substring(1);
+  var params = JSON.parse('{"' + decodeURI(searchQuery).replace(/&/g, '","').replace(/\+/g, ' ').replace(/=/g,'":"') + '"}');
+  //var user = users.getUser(message);
+  const formattedTime = moment(message.createdAt).format('LT');
+  const template = document.querySelector('#message-template').innerHTML;
+  const html = Mustache.render(template, {
+    from: params.name,
+    text: message,
+    createdAt: formattedTime
+  });
+  
+  const div = document.createElement('div');
+  div.classList.add('message__style')
+  div.innerHTML = html;
+  document.querySelector('#messages').appendChild(div);
+  scrollToBottom();
+
+  // createMessage
   socket.emit("createMessage", {
     text: document.querySelector('input[name="message"]').value
   }, function() {
     document.querySelector('input[name="message"]').value = '';
   })
+
+  
 })
 
 
