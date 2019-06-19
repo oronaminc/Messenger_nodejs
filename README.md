@@ -6,13 +6,16 @@ Messenger_nodejs (private project)
 1. Multi Chatting Function
 2. Sending Location
 3. Making Chatting Room
-4. Designate
+4. Designate Nickname
+
+## URL
+https://skku-club.appspot.com
 
 
 ## ScreenShot
 <div>
-  <img width = "200" src="https://user-images.githubusercontent.com/37185394/59769567-5f8ec600-92e1-11e9-89e3-f250bea68a1a.JPG"/>
-  <img width="200" src ="https://user-images.githubusercontent.com/37185394/59769568-60275c80-92e1-11e9-8db9-adca2ef14997.JPG"/>
+  <img width = "500" src="https://user-images.githubusercontent.com/37185394/59769567-5f8ec600-92e1-11e9-89e3-f250bea68a1a.JPG"/>
+  <img width="500" src ="https://user-images.githubusercontent.com/37185394/59769568-60275c80-92e1-11e9-8db9-adca2ef14997.JPG"/>
 </div>
 
 ## npm install 
